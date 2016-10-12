@@ -1,4 +1,4 @@
-var MainLayout = React.createClass({
+const MainLayout = React.createClass({
   render: function() {
     return (<div>
       {{ en: `Hello`, uk: `Привіт`, es: `Hola` }['uk']}
