@@ -1,20 +1,32 @@
 const MainLayout = React.createClass({
-  getInitialState: () => ({ lang: undefined }),
+  getInitialState: () => ({ lang: navigator.language.slice(0,2) }),
 
-  setLanguage(event) {
-    console.log(event.currentTarget.id);
-    this.setState({ lang: event.currentTarget.id });
+  setLanguage(lang) {
+    console.log(lang);
+    this.setState({ lang });
   },
+
+  languagesSet: () => [
+    { id: 'en', name: 'English', word: 'Hello' },
+    { id: 'uk', name: 'Ukrainian', word: 'Привіт' },
+    { id: 'es', name: 'Español', word: 'Hola' },
+  ],
 
   render() {
     return (
       <div>
         <h1>Say Hello In...</h1>
-        <input type="button" id="en" className="select-button" onClick={this.setLanguage} value="English" />
-        <button id="uk" className="select-button" onClick={this.setLanguage}>Ukrainian</button>
-        <button id="es" className="select-button" onClick={this.setLanguage}>Español</button>
+        {this.languagesSet().map((item) => (
+          <button
+            key={item.id}
+            className={item.id === this.state.lang && 'select-button' || ''}
+            onClick={() => this.setLanguage(item.id)}
+          >
+            {item.name}
+          </button>
+        ))}
         <h1>
-          {{ en: `Hello`, uk: `Привіт`, es: `Hola` }[this.state.lang]}
+          {this.languagesSet().find(item => item.id === this.state.lang).word}
         </h1>
       </div>
     );
