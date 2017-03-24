@@ -1,21 +1,23 @@
 const MainLayout = React.createClass({
-  getInitialState: function() {
-    return { lang: undefined };
-  },
+  getInitialState: () => ({ lang: undefined }),
 
-  setLanguage: function(event) {
+  setLanguage(event) {
     console.log(event.currentTarget.id);
     this.setState({ lang: event.currentTarget.id });
   },
 
-  render: function() {
-    return (<div>
-      <h1>React test</h1>
-      <input type="button" id="en" onClick={this.setLanguage} value="[EN]" />
-      <button id="uk" onClick={this.setLanguage}>[UK]</button>
-      <hr />
-      {{ en: `Hello`, uk: `Привіт`, es: `Hola` }[this.state.lang]}
-    </div>);
+  render() {
+    return (
+      <div>
+        <h1>Say Hello In...</h1>
+        <input type="button" id="en" onClick={this.setLanguage} value="English" />
+        <button id="uk" onClick={this.setLanguage}>Ukrainian</button>
+        <button id="es" onClick={this.setLanguage}>Español</button>
+        <h1>
+          {{ en: `Hello`, uk: `Привіт`, es: `Hola` }[this.state.lang]}
+        </h1>
+      </div>
+    );
   }
 });
 
