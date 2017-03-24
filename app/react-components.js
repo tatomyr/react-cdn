@@ -10,9 +10,9 @@ const MainLayout = React.createClass({
     return (
       <div>
         <h1>Say Hello In...</h1>
-        <input type="button" id="en" onClick={this.setLanguage} value="English" />
-        <button id="uk" onClick={this.setLanguage}>Ukrainian</button>
-        <button id="es" onClick={this.setLanguage}>Español</button>
+        <input type="button" id="en" className="select-button" onClick={this.setLanguage} value="English" />
+        <button id="uk" className="select-button" onClick={this.setLanguage}>Ukrainian</button>
+        <button id="es" className="select-button" onClick={this.setLanguage}>Español</button>
         <h1>
           {{ en: `Hello`, uk: `Привіт`, es: `Hola` }[this.state.lang]}
         </h1>
